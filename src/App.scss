@@ -12,6 +12,46 @@ $blackColor: #000;
   }
 }
 
+@mixin bg($size){
+  @if $size == m {
+    @media (max-width:1024px){
+      @content
+    }
+  }
+
+}
+
 p {
-  @include type-1(32)
+  @include type-1(32); 
+  span{
+    color:red;
+    @include bg(m){
+      background-color: aqua;
+    }
+    &:hover{
+      background: darken(red, 20%);
+      opacity:0.8;
+    }
+  }
+}
+
+@function grid($col, $tot: 12){
+  @return($col / $tot) * 100%
+}
+
+@for $i from 1 through 10{
+  .opacity-#{$i}{
+    opacity:$i/10
+  }
+}
+
+.grid {
+  width: 100%;
+  height: 100%;
+  .box{
+    color: #fff;
+    width: grid(3);
+    height: 60px;
+    background:rgb(25, 105, 49)
+  }
 }
