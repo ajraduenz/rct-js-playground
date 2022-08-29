@@ -1,0 +1,17 @@
+$blackColor: #000;
+.App {
+  text-align: center;
+  background-color: $blackColor;
+}
+
+@mixin type-1($size) {
+  color:#fff;
+  font-weight: bold;
+  @if $size == 32 {
+    font-size: 2rem;
+  }
+}
+
+p {
+  @include type-1(32)
+}
