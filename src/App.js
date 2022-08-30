@@ -1,8 +1,9 @@
 import "./App.scss";
 import { useSelector, useDispatch } from "react-redux";
+import { incrementar, reduzir } from "./store/contador";
 
 function App() {
-  const state = useSelector((state) => state);
+  const state = useSelector((state) => state.total);
   const dispatch = useDispatch();
   return (
     <div className="App">
@@ -23,7 +24,8 @@ function App() {
       </div>
       <div>
         <p>Total:{state}</p>
-        <button onClick={() => dispatch({ type: "INCREMENTAR" })}>Somar</button>
+        <button onClick={() => dispatch(incrementar())}>Somar</button>
+        <button onClick={() => dispatch(reduzir())}>Diminuir</button>
       </div>
     </div>
   );
