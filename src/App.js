@@ -1,10 +1,14 @@
 import "./App.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { incrementar, reduzir } from "./store/contador";
+import { close, open } from "./store/alertMessage";
 
 function App() {
-  const state = useSelector((state) => state.total);
+  
+  const total = useSelector((state) => state.contador.total);
+  const alertMessage = useSelector((state) => state.alertMessage);
   const dispatch = useDispatch();
+
   return (
     <div className="App">
       <p>
@@ -23,10 +27,15 @@ function App() {
         <div className="box opacity-10">a</div>
       </div>
       <div>
-        <p>Total:{state}</p>
+        <p>Total:{total}</p>
         <button onClick={() => dispatch(incrementar())}>Somar</button>
         <button onClick={() => dispatch(reduzir())}>Diminuir</button>
       </div>
+      <div>
+        <button onClick={() => dispatch(open())}>open alert</button>
+        <button onClick={() => dispatch(close())}>close alert</button>
+      </div>
+      {alertMessage && <p>Alert message</p>}
     </div>
   );
 }

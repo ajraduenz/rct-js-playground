@@ -1,6 +1,13 @@
-import { configureStore } from "@reduxjs/toolkit";
+import {
+  combineReducers,
+  configureStore,
+
+} from "@reduxjs/toolkit";
 import contador from "./contador";
+import alertMessage from "./alertMessage";
 
-const store = configureStore({ reducer: contador });
+const reducer = combineReducers({ contador, alertMessage });
 
-export default store
+const store = configureStore({ reducer });
+
+export default store;
